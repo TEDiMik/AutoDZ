@@ -3,6 +3,7 @@ import codewars
 
 class TestCalc(unittest.TestCase):
 
+
     def test_codewars_stringEdit(self):
 
         result = codewars.to_camel_case("the_stealth_warrior")
@@ -17,11 +18,12 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(result,"TheStealthWarrior","to_camel_case('The-Stealth-Warrior') did not return correct value")
 
 
-     def test_codewars_stringEdit_3(self):
-
+    def test_codewars_stringEdit_3(self):
         result = codewars.to_camel_case("a-Cat_Is-evil")
-
         self.assertEqual(result,"aCatIsEvil")
+
+    
+
     
 
 

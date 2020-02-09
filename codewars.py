@@ -16,12 +16,11 @@ def to_camel_case(text):
 
 
     if '_' in text or '-' in text:
-        if '_' in text:
-            textStrip = text.split("_")
-        else:
-            textStrip = text.split("-")
+
+        textStrip = (text.replace('-','_')).split("_")
+
         
-        textStrip = text.split()
+        
 
         str1 = textStrip[0] 
         n = False
