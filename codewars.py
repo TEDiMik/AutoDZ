@@ -39,4 +39,26 @@ def to_camel_case(text):
     return ""
 
 
+
+
+def bouncingBall(h, bounce, window):
+    
+    i = 0
+    while h > window:
+        i += 1
+        if h > window:
+            h *= bounce
+            i += 1
+        else:
+            return i+1
         
+
+
+    return i+1
+
+
+
+
+def countBits(n):
+
+    
