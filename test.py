@@ -28,6 +28,9 @@ class TestCalc(unittest.TestCase):
 
         self.assertEqual(result,3)
 
+
+        
+
     def test_codewars_stringEdit(self):
 
         result = codewars.to_camel_case("the_stealth_warrior")
