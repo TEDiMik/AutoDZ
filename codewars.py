@@ -83,3 +83,61 @@ def countBits(n):
 # return b.count("1") # возращаем колличество 1 в строке И ВСЕЕЕЕЕЕЕЕЕЕЕ
 # Я узнал о этих двух методов(PS раньше вообще их незнал)
 
+
+
+
+def make_readable(seconds):
+
+    if seconds <= 59:
+        if seconds > 9:
+            return "00:00:"+str(seconds)
+        else:
+            return "00:00:0"+str(seconds)
+        
+
+    
+    minuts = seconds // 60
+
+    if minuts <= 59:
+
+        if seconds == 60:
+            return "00:0"+str(seconds // 60)+":0"+str((seconds-(minuts*60)))
+
+        if minuts > 9:
+            return "00:"+str(seconds // 60)+":"+str((seconds-(minuts*60)))
+        else:
+            return "00:0"+str(seconds // 60)+":"+str((seconds-(minuts*60)))
+
+
+    hour = minuts // 60
+    if hour > 9:
+        hour = "0"+str(hour)
+
+    minuts = minuts - (hour*60)
+    if minuts > 9:
+        minuts = "0"+str(minuts)
+
+    sec = (seconds - (hour*60*60)) - (minuts*60)
+    if sec > 9:
+        sec = "0"+str(sec)
+
+
+
+    return str(hour)+":"+str(minuts)+":"+str(sec)
+        
+
+
+
+
+
+def format_duration(s):
+
+    hour = s // 3600
+    minute = s // 60 % 60
+    second = s % 60
+
+    
+
+    return '{:02}:{:02}:{:02}'.format(hour, minute, second)
+
+    

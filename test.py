@@ -20,6 +20,52 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(result,1)
 
 
+#make_readable
+
+    def test_codewars_make_readable_86399_23_59_59(self):
+
+        result = codewars.make_readable(86399)
+
+        self.assertEqual(result,"23:59:59")
+
+
+    def test_codewars_make_readable_70_00_01_10(self):
+
+        result = codewars.make_readable(70)
+
+        self.assertEqual(result,"00:01:10")
+
+    def test_codewars_make_readable_60_00_01_00(self):
+
+        result = codewars.make_readable(60)
+
+        self.assertEqual(result,"00:01:00")
+
+
+    def test_codewars_make_readable_0_00_00_00(self):
+
+        result = codewars.make_readable(0)
+
+        self.assertEqual(result,"00:00:00")
+
+
+    def test_codewars_make_readable_5_00_00_05(self):
+
+        result = codewars.make_readable(5)
+
+        self.assertEqual(result,"00:00:05")
+
+    def test_codewars_format_duration_86399_23_59_59(self):
+
+        result = codewars.format_duration(86399)
+
+        self.assertEqual(result,"23:59:59")
+    
+
+
+        
+
+
 
     
     def test_codewars_countBits_7_3(self):
