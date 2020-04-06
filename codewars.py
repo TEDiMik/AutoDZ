@@ -90,9 +90,13 @@ def make_readable(seconds):
 
     if seconds <= 59:
         if seconds > 9:
-            return "00:00:"+str(seconds)
-        else:
-            return "00:00:0"+str(seconds)
+
+            m = seconds
+            if (m>9)and(m<20)or(m>110)or((m % 10)>4)or((m % 10)==0):
+                print(m,"секунд")
+            else:
+                if (m % 10)==1: print(m,"секунда")
+                else: print(m,"секунды")
         
 
     
@@ -126,18 +130,122 @@ def make_readable(seconds):
     return str(hour)+":"+str(minuts)+":"+str(sec)
         
 
+def pluralRusVariant(x):
 
+    latTwoDigits = x % 100
+    tens = latTwoDigits / 10
+    if tens == 1:
+        return 2
+    ones = latTwoDigits % 10
+    if ones == 1:
+        return 0
+    if ones >= 2 and ones <= 4:
+        return 1
+    return 2
+
+def showHours(hours):
+    suffix = [ "час", "часа", "часов" ] [pluralRusVariant(hours)]
+    return "{0} {1}".format(hours, suffix)
 
 
 
 def format_duration(s):
+    
+    if s == 0:
+        return "now"
+        
+    
+    strDay =""
+    strHour=""
+    strMinute=""
+    strSecond=""
+    strYear=""
+    
+    day = s // 86400
 
-    hour = s // 3600
+    hour = s // 3600 - day * 24
+
     minute = s // 60 % 60
+
     second = s % 60
 
     
 
-    return '{:02}:{:02}:{:02}'.format(hour, minute, second)
+    year = day // 365
+
+
+    if second != 0:
+        m = second
+        if (m>9)and(m<20)or(m>110)or((m % 10)>4)or((m % 10)==0):
+            strSecond = str(m)+" seconds"
+        else:
+            if (m % 10)==1: strSecond = str(m)+" second"
+            else: strSecond = str(m)+" seconds"
+
+    if minute != 0:
+        m = minute
+        if (m>9)and(m<20)or(m>110)or((m % 10)>4)or((m % 10)==0):
+            strMinute= str(m)+" minutes"
+        else:
+            if (m % 10)==1: strMinute = str(m)+" minute"
+            else: strMinute = str(m)+" minutes"
+
+    if hour != 0:
+        m = hour
+        if (m>9)and(m<20)or(m>110)or((m % 10)>4)or((m % 10)==0):
+            strHour = str(m)+" hours"
+        else:
+            if (m % 10)==1: strHour = str(m)+" hour"
+            else: strHour = str(m)+" hours"
+
+
+    if day != 0:
+        m = day
+        if (m>9)and(m<20)or(m>110)or((m % 10)>4)or((m % 10)==0):
+            strDay = str(m)+" days"
+        else:
+            if (m % 10)==1: strDay = str(m)+" days"
+            else: strDay = str(m)+" days"
+
+
+    if year != 0:
+        m = year
+        if (m>9)and(m<20)or(m>110)or((m % 10)>4)or((m % 10)==0):
+            strYear = str(m)+"секунд"
+        else:
+            if (m % 10)==1: strYear = str(m)+"секунда"
+            else: strYear = str(m)+"секунды"
+
+    strM = [strYear, strDay, strHour, strMinute, strSecond]
+    strM_new = []
+    for x in strM:
+        if x != "":
+            strM_new.append(x)
+    
+    k = len(strM_new) - 1
+    strOutput = ""
+    for i in strM_new:
+
+        if i == k:
+            strOutput += i + " and "
+            #строим строку по другому
+        else:
+            strOutput += i + ", "
+
+
+    while i != len(strM_new):
+
+        if i == k:
+            strOutput += i + " and "
+            #строим строку по другому
+        else:
+            strOutput += i + ", "
+
+        i += 1
+
+    
+    
+
+    return strOutput
 
     
